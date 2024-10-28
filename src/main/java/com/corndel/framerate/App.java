@@ -1,5 +1,6 @@
 package com.corndel.framerate;
 
+import com.corndel.framerate.repositories.MovieRepository;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
@@ -30,9 +31,12 @@ public class App {
         });
 
     app.get("/", ctx -> {
-      ctx.result("Hello, World!");
+      ctx.json(MovieRepository.findAll());
     });
-
+      app.get("/movie/{id}", ctx -> {
+          var id = Integer.parseInt(ctx.pathParam("id"));
+          ctx.json(MovieRepository.findById(id));
+      });
     return app;
   }
 }
