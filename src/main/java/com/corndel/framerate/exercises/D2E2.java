@@ -28,6 +28,7 @@ public class D2E2 {
         "/d2e2",
         ctx -> {
           // TODO: Render 'd2e2.html'
+            ctx.render("d2e2.html");
           // (note, we have used setPrefix above so the path is relative to
           // /exercises/templates/)
 
