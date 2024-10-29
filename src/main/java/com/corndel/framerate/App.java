@@ -1,5 +1,7 @@
 package com.corndel.framerate;
 
+import com.corndel.framerate.controllers.MovieController;
+import com.corndel.framerate.controllers.ReviewController;
 import com.corndel.framerate.repositories.MovieRepository;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
@@ -30,13 +32,12 @@ public class App {
           config.fileRenderer(new JavalinThymeleaf(engine));
         });
 
-    app.get("/", ctx -> {
-      ctx.json(MovieRepository.findAll());
-    });
-      app.get("/movie/{id}", ctx -> {
-          var id = Integer.parseInt(ctx.pathParam("id"));
-          ctx.json(MovieRepository.findById(id));
-      });
+
+      app
+          .get("/", MovieController::getAll)
+          .get("/movie/{movieId}", MovieController::getById)
+          .get("/review/{movieId}", ReviewController::getForm)
+          .post("/review/{movieId}", ReviewController::createReview);
     return app;
   }
 }

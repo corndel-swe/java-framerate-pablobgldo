@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Movie Details</title>
+</head>
+<body>
+<h1 th:text="${movie.title}"></h1>
+<img th:src="${movie.imageURL}"/>
+<ul>
+    <li th:text="'Release Date: ' + ${movie.releaseDate}"></li>
+    <li th:text="'Age Rating: ' + ${movie.ageRating}"></li>
+    <li th:text="'Genre: ' + ${movie.genres}"></li>
+    <li th:text="'Runtime: ' + ${movie.runtime}"></li>
+</ul>
+
+<h2>Reviews</h2>
+    <ul>
+        <li th:each="review : ${reviews}" th:text="${review.content} + ' Rating: ' + ${review.rating}"></li>
+    </ul>
+
+</body>
+</html>
