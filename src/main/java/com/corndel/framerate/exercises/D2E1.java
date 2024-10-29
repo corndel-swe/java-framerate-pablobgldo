@@ -25,6 +25,7 @@ public class D2E1 {
     app.get(
         "/d2e1",
         ctx -> {
+            ctx.render("d2e1.html");
           // TODO: Render 'd2e1.html'
           // TODO: Open d2e1.html and follow the instructions
         });
