@@ -42,7 +42,7 @@ public class Movie {
     this.imageURL = imageURL;
   }
 
-  private int id;
+  public int id;
   public String title;
   public String releaseDate;
   public String ageRating;
